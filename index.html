@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- Favicon menggunakan link eksternal -->
+  <link rel="icon" type="image/png" href="https://filegoat.s3.de.io.cloud.ovh.net/8342cda4-ec06-4c04-ae16-0fa16a30c369/file_0000000074d47208bec22b89425caf8b.png">
+  <link rel="apple-touch-icon" href="https://filegoat.s3.de.io.cloud.ovh.net/8342cda4-ec06-4c04-ae16-0fa16a30c369/file_0000000074d47208bec22b89425caf8b.png">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NanzzTube - Nonton Film & Serial">
+  <meta property="og:description" content="Streaming film, serial, dan video favorit kamu secara gratis. Nonton sekarang tayangan terbaru dengan kualitas HD dan tanpa IKLAN.">
+  <meta property="og:image" content="https://i.ibb.co.com/YBBY4t9T/IMG-20260501-WA0119.jpg">
+  <meta property="og:url" content="https://nanzztube.vercel.app">
+  <meta property="og:site_name" content="NanzzTube">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NanzzTube - Nonton Film & Serial">
+  <meta name="twitter:description" content="Streaming film, serial, dan video favorit kamu secara gratis. Nonton sekarang tayangan terbaru dengan kualitas HD.">
+  <meta name="twitter:image" content="https://i.ibb.co.com/YBBY4t9T/IMG-20260501-WA0119.jpg">
+  
+  <title>NanzzTube - Nonton Film & Serial</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    /* Mengubah warna tema merah menjadi BIRU (Sky Blue #0ea5e9 / Tailwind sky-500) */
+    :root {
+      --primary-color: #0ea5e9;
+      --primary-hover: #0284c7;
+      --primary-glow: rgba(14, 165, 233, 0.5);
+      --bg-dark: #0a0e17;
+      --bg-darker: #05070a;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      width: 100vw;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark); 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-hover); 
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-hover {
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, z-index 0s;
+    }
+    .card-hover:hover {
+      transform: scale(1.05);
+      z-index: 20;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8), 0 10px 10px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-ripple {
+      position: relative;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+    }
+    .btn-ripple::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10, 10);
+      opacity: 0;
+      transition: transform .5s, opacity 1s;
+    }
+    .btn-ripple:active::after {
+      transform: scale(0, 0);
+      opacity: .3;
+      transition: 0s;
+    }
+
+    .logo-glow {
+      transition: text-shadow 0.3s ease, color 0.3s ease;
+      color: var(--primary-color);
+    }
+    .logo-glow:hover {
+      text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow);
+      color: #38bdf8;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    iframe {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#0ea5e9] selection:text-white">
+
+  <header id="navbar" class="fixed top-0 w-full z-50 flex items-center justify-between px-4 sm:px-6 py-4 lg:px-12 transition-all duration-500 bg-gradient-to-b from-[#05070a] to-transparent box-border">
+    <div class="flex items-center gap-4 lg:gap-10">
+      <div class="flex items-center gap-3">
+        <button id="btn-back" class="hidden text-gray-300 hover:text-white hover:-translate-x-1 transition-all duration-300" onclick="goHome()">
+          <i class="fas fa-arrow-left text-xl"></i>
+        </button>
+        <h1 class="text-xl sm:text-2xl lg:text-3xl font-black tracking-widest cursor-pointer logo-glow" onclick="goHome()">
+          NANZZTUBE
+        </h1>
+      </div>
+      
+      <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-300">
+        <span class="cursor-pointer text-white font-bold nav-link" onclick="goHome()">Beranda</span>
+        <span class="cursor-pointer hover:text-white transition nav-link">Film</span>
+        <span class="cursor-pointer hover:text-white transition nav-link">Serial</span>
+        <span class="cursor-pointer hover:text-white transition nav-link">Favorit</span>
+      </nav>
+    </div>
+
+    <div class="flex items-center gap-2 sm:gap-4 lg:gap-6">
+      <form id="search-form" class="flex items-center bg-[#1e293b]/80 border border-transparent hover:border-gray-500 rounded-full px-3 py-1.5 focus-within:border-sky-500 focus-within:bg-[#0f172a] transition-all duration-300 shadow-sm focus-within:shadow-[0_0_10px_rgba(14,165,233,0.2)]">
+        <button type="submit" class="text-gray-400 hover:text-sky-400 mr-2 transition-colors hover:scale-110 transform duration-200">
+          <i class="fas fa-search text-sm sm:text-base"></i>
+        </button>
+        <input 
+          type="text" 
+          id="search-input"
+          placeholder="Cari Video"
+          class="bg-transparent outline-none text-xs sm:text-sm text-white w-20 sm:w-32 focus:w-32 sm:focus:w-48 transition-all duration-300 placeholder-gray-500"
+        >
+      </form>
+      
+      <div class="flex items-center gap-3 cursor-pointer group hidden sm:flex">
+        <div class="bg-slate-800 rounded-full p-2 border border-slate-600 group-hover:border-sky-400 transition-colors duration-300 overflow-hidden">
+          <i class="fas fa-user text-gray-300 text-sm group-hover:text-white transition-colors duration-300 group-hover:scale-110 transform"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="loader" class="h-screen w-screen flex items-center justify-center bg-[#0a0e17] transition-opacity duration-300 fixed inset-0 z-[100]">
+    <div class="flex flex-col items-center gap-4">
+      <i class="fas fa-circle-notch fa-spin text-[#0ea5e9] text-5xl"></i>
+      <span class="text-sky-400 font-medium tracking-widest animate-pulse">MEMUAT...</span>
+    </div>
+  </div>
+  
+  <div id="error-message" class="hidden h-screen w-screen flex-col items-center justify-center bg-[#0a0e17] text-center px-4 fade-in fixed inset-0 z-[100]">
+    <i class="fas fa-satellite-dish text-sky-500 text-6xl mb-6 animate-pulse"></i>
+    <h2 id="error-text" class="text-2xl font-bold text-white mb-6">Sinyal terputus.</h2>
+    <button onclick="fetchVideos('Upin ipin')" class="btn-ripple bg-[#0ea5e9] px-8 py-3 rounded-full font-bold hover:bg-[#0284c7] hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(14,165,233,0.4)]">
+      Koneksikan Ulang
+    </button>
+  </div>
+
+  <main id="home-view" class="hidden w-full overflow-hidden">
+    <section class="relative w-full h-[75vh] sm:h-[85vh] min-h-[500px] flex items-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img id="hero-img" src="" alt="Banner" class="w-full h-full object-cover transition-all duration-1000 opacity-0 scale-105" onload="this.classList.remove('opacity-0'); this.classList.remove('scale-105');">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0a0e17] via-[#0a0e17]/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-transparent"></div>
+      </div>
+
+      <div class="relative z-10 px-4 sm:px-8 lg:px-16 max-w-[100vw] sm:max-w-4xl pt-20 fade-in box-border" style="animation-delay: 0.2s;">
+        <div class="flex items-center gap-2 bg-[#0ea5e9] rounded-full px-3 py-1 w-max mb-4 hover:bg-[#0284c7] transition-colors cursor-default shadow-[0_0_10px_rgba(14,165,233,0.5)]">
+          <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <span class="text-xs font-bold tracking-wider">BARU</span>
+        </div>
+        
+        <h2 id="hero-title" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-tight mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] text-white hover:text-sky-100 transition-colors cursor-default w-full break-words">
+          JUDUL FILM
+        </h2>
+        
+        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-300 mb-6 font-medium drop-shadow-md">
+          <span class="text-sky-400 font-bold">100% Cocok</span>
+          <span id="hero-channel" class="hover:text-white transition-colors cursor-pointer">Channel</span>
+          <span id="hero-duration" class="border border-slate-600 bg-slate-800/50 px-2 text-xs rounded-sm hover:bg-white hover:text-black hover:border-white transition-colors cursor-default">HD</span>
+        </div>
+
+        <p id="hero-desc" class="max-w-[90%] sm:max-w-2xl text-xs sm:text-sm md:text-base text-gray-300 mb-8 line-clamp-3 md:line-clamp-none drop-shadow-lg">
+          Deskripsi video akan tampil di sini.
+        </p>
+
+        <div class="flex gap-3 sm:gap-4 flex-wrap">
+          <button id="hero-play-btn" class="btn-ripple bg-[#0ea5e9] hover:bg-[#0284c7] text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full flex items-center gap-2 font-bold transition-all text-sm sm:text-base hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(14,165,233,0.4)]">
+            <i class="fas fa-play"></i> TONTON SEKARANG
+          </button>
+          <button class="btn-ripple bg-slate-800/60 hover:bg-slate-700 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full flex items-center gap-2 font-bold transition-all backdrop-blur-md text-sm sm:text-base hover:scale-105 active:scale-95 border border-slate-600 hover:border-sky-400">
+            <i class="fas fa-info-circle"></i> INFO DETAIL
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-10 px-4 sm:px-8 lg:px-16 pb-20 -mt-10 sm:-mt-20 fade-in box-border" style="animation-delay: 0.4s;">
+      <h3 class="text-xl md:text-2xl font-bold mb-6 text-white drop-shadow-md flex items-center gap-2">
+        Rekomendasimu
+        <i class="fas fa-chevron-right text-sm text-sky-500 mt-1 cursor-pointer hover:text-sky-300 hover:translate-x-1 transition-all"></i>
+      </h3>
+      <div id="home-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 w-full"></div>
+    </section>
+  </main>
+
+  <main id="watch-view" class="hidden pt-20 sm:pt-24 pb-20 px-4 sm:px-8 lg:px-16 w-full mx-auto max-w-screen-2xl box-border">
+    <button onclick="goHome()" class="md:hidden flex items-center gap-2 mb-4 text-gray-400 hover:text-sky-400 hover:-translate-x-1 transition-all">
+      <i class="fas fa-arrow-left"></i> Kembali
+    </button>
+
+    <div class="w-full relative fade-in" style="animation-delay: 0.1s;">
+      <div class="w-full aspect-video bg-black rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-slate-800">
+        <iframe 
+          id="video-player"
+          class="w-full h-full"
+          src="" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="mt-6 md:mt-8 fade-in w-full box-border" style="animation-delay: 0.3s;">
+      <h1 id="watch-title" class="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tight mb-3 break-words">
+        JUDUL VIDEO
+      </h1>
+      
+      <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base text-slate-400 font-medium mb-6">
+        <span class="text-sky-400 font-bold bg-sky-900/30 px-2 py-0.5 rounded text-xs sm:text-sm">Cocok 98%</span>
+        <span id="watch-channel" class="hover:text-white transition-colors cursor-pointer text-slate-300">Channel</span>
+        <div class="flex items-center gap-1 text-white group cursor-pointer">
+          <i class="fas fa-star text-sky-400 text-sm group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300"></i>
+          <span id="watch-rating" class="group-hover:text-sky-400 transition-colors font-bold">9.5</span>
+        </div>
+        <span id="watch-duration">24m</span>
+        <span class="border border-slate-600 px-1.5 py-0.5 text-xs rounded text-slate-300">HD</span>
+      </div>
+      
+      <p id="watch-desc" class="max-w-[100%] sm:max-w-4xl text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed hover:text-white transition-colors duration-300">
+        Deskripsi video lengkap.
+      </p>
+
+      <div class="mt-8 flex gap-6">
+        <button class="flex flex-col items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800 border border-transparent flex items-center justify-center group-hover:border-sky-400 group-hover:bg-slate-700 transition-all shadow-md">
+            <i class="fas fa-plus group-hover:scale-110 transition-transform"></i>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold">Daftarku</span>
+        </button>
+        <button class="flex flex-col items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800 border border-transparent flex items-center justify-center group-hover:border-sky-400 group-hover:bg-slate-700 transition-all shadow-md">
+            <i class="far fa-thumbs-up group-hover:-translate-y-1 transition-transform"></i>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold">Nilai</span>
+        </button>
+        <button class="flex flex-col items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800 border border-transparent flex items-center justify-center group-hover:border-sky-400 group-hover:bg-slate-700 transition-all shadow-md">
+            <i class="fas fa-share group-hover:translate-x-1 transition-transform"></i>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold">Bagikan</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-12 sm:mt-16 fade-in w-full box-border" style="animation-delay: 0.5s;">
+      <h3 class="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
+        Mirip Seperti Ini
+        <div class="h-[2px] bg-sky-500 w-12 ml-2 rounded-full"></div>
+      </h3>
+      <div id="watch-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 w-full"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+<script>
+(function(){
+  function removeAds(){
+    var ad=document.getElementById('server-footer-ad');
+    if(ad)ad.remove();
+    document.querySelectorAll('link[href*="ads.css"]').forEach(function(el){el.remove();});
+  }
+  removeAds();
+  new MutationObserver(function(){removeAds();}).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+</body>
+</html>
