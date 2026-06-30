@@ -1,0 +1,17 @@
+{
+  "name": "NanzzTube - Nonton Film & Serial",
+  "short_name": "NanzzTube",
+  "description": "Streaming film, serial, dan video favorit kamu secara gratis.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e17",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "https://c.tyn.biz.id/xy2b.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
