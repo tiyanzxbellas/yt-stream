@@ -1,6 +1,6 @@
 {
-  "name": "NanzzTube - Nonton Film & Serial",
-  "short_name": "NanzzTube",
+  "name": "YtStreams - Nonton Film & Serial",
+  "short_name": "YtStreams",
   "description": "Streaming film, serial, dan video favorit kamu secara gratis.",
   "start_url": "/",
   "display": "standalone",

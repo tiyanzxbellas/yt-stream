@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nanzztube-cache-v1';
+const CACHE_NAME = 'ytstreams-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
